@@ -24,6 +24,10 @@ export default function HomePage() {
         <ContactForm />
       </section>
 
+      
+      {/* 2. Reemplazamos el comentario por el componente */}
+      <BlogSection />
+
       {/* Las demás secciones se agregarán en features posteriores */}
     </>
   );
