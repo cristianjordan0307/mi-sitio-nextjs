@@ -1,7 +1,4 @@
 "use client";
-// components/GalleryImage.tsx
-// Client: hover interactivo con overlay y caption.
-
 import { useState } from "react";
 import Image from "next/image";
 import type { GalleryImageType } from "@/types";
@@ -10,19 +7,31 @@ export default function GalleryImage({ image }: { image: GalleryImageType }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <figure className="relative overflow-hidden rounded-lg border-2
-      border-gray-200 cursor-pointer transition-all
-      duration-300 hover:shadow-xl hover:scale-105"
+    <figure
+      className="relative overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105"
+      style={{
+        height: "175px",
+        borderRadius: "10px",
+        border: "2px solid #1f2937",
+      }}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}>
-      <Image src={image.src} alt={image.alt}
-        width={image.width} height={image.height}
-        sizes="(max-width:480px) 100vw, (max-width:768px) 50vw, 33vw"
-        className="w-full h-48 sm:h-56 lg:h-64 object-cover" />
-      <figcaption className={`absolute inset-0 bg-gradient-to-t
-        from-black/70 to-transparent flex items-end p-4
-        transition-opacity ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-        <p className="text-white text-sm">{image.alt}</p>
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes="(max-width:640px) 100vw, 33vw"
+        className="object-cover"
+      />
+      <figcaption
+        className="absolute inset-0 flex items-end p-2 transition-opacity duration-300"
+        style={{
+          background: "linear-gradient(to top, rgba(0,0,0,0.75), transparent)",
+          opacity: isHovered ? 1 : 0,
+        }}
+      >
+        <p style={{ color: "#ffffff", fontSize: "11px" }}>{image.alt}</p>
       </figcaption>
     </figure>
   );

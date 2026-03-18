@@ -1,8 +1,4 @@
 "use client";
-// components/SearchBar.tsx
-// Client Component: necesita 'use client' porque usa useState
-// para capturar el valor del input de búsqueda.
-
 import { useState, type FormEvent } from "react";
 
 export default function SearchBar() {
@@ -10,9 +6,7 @@ export default function SearchBar() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (query.trim()) {
-      console.log("Búsqueda:", query);
-    }
+    if (query.trim()) console.log("Búsqueda:", query);
   };
 
   return (
@@ -23,13 +17,32 @@ export default function SearchBar() {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Buscar..."
         aria-label="Buscar en el sitio"
-        className="px-3 py-2 text-gray-900 rounded-l-md 
-                   focus:ring-2 focus:ring-blue-400 w-40 sm:w-56"
+        style={{
+          backgroundColor: "#e5e7eb",
+          color: "#111827",
+          border: "none",
+          padding: "6px 12px",
+          borderRadius: "4px 0 0 4px",
+          fontSize: "14px",
+          fontWeight: "600",
+          fontFamily: "inherit",
+          width: "200px",
+          outline: "none",
+        }}
       />
-      <button 
+      <button
         type="submit"
-        className="px-4 py-2 bg-blue-500 text-white rounded-r-md 
-                   hover:bg-blue-600 transition-colors"
+        style={{
+          backgroundColor: "#2563eb",
+          color: "#ffffff",
+          border: "none",
+          padding: "6px 16px",
+          borderRadius: "0 4px 4px 0",
+          fontSize: "14px",
+          fontWeight: "600",
+          fontFamily: "inherit",
+          cursor: "pointer",
+        }}
       >
         Buscar
       </button>

@@ -1,10 +1,7 @@
-// app/layout.tsx - RootLayout
-// Punto de entrada: define <html>, metadata, fuente, Navbar y Footer.
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer"; // 1. Descomentamos el Footer
+import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/data";
 import "./globals.css";
 
@@ -18,12 +15,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${inter.className} bg-gray-100 min-h-screen flex flex-col`}>
+      <body
+        className={inter.className}
+        style={{ backgroundColor: "#030712", color: "#f3f4f6", minHeight: "100vh", display: "flex", flexDirection: "column" }}
+      >
         <Navbar />
-        {/* main con flex-1 asegura que el footer siempre se vaya al fondo */}
-        <main className="flex-1">{children}</main>
-        
-        {/* 2. Agregamos el componente Footer aquí */}
+        <main style={{ flex: 1 }}>{children}</main>
         <Footer />
       </body>
     </html>
