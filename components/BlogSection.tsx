@@ -1,39 +1,36 @@
-import BlogCard from './BlogCard';
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "Mi primer post",
-    description: "Aprendiendo a construir componentes con Next.js y Tailwind.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    slug: "mi-primer-post"
-  },
-  {
-    id: 2,
-    title: "Configurando SQL Server",
-    description: "Guía básica para normalización de bases de datos.",
-    image: "https://images.unsplash.com/photo-1544380903-58065ca7303f",
-    slug: "sql-server-guia"
-  }
-];
+import BlogCard from "./BlogCard";
+import { blogPosts } from "@/lib/data";
 
 export default function BlogSection() {
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Nuestro Blog</h2>
-        {/* Ajuste: grid-cols-1 garantiza el stack vertical en móvil */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <BlogCard 
-              key={post.id}
-              title={post.title}
-              description={post.description}
-              image={post.image}
-              slug={post.slug}
-            />
-          ))}
-        </div>
+    <section style={{ backgroundColor: "#111827", padding: "40px 20px" }}>
+      <h2 style={{
+        color: "#ffffff",
+        fontSize: "20px",
+        fontWeight: "700",
+        textAlign: "center",
+        marginBottom: "32px",
+      }}>
+        Últimas entradas del blog
+      </h2>
+      <div style={{
+        maxWidth: "700px",
+        margin: "0 auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+      }}>
+        {blogPosts.map((post) => (
+          <BlogCard
+            key={post.id}
+            title={post.title}
+            date={post.date}
+            description={post.excerpt}
+            image={post.image.src}
+            imageAlt={post.image.alt}
+            slug={post.slug}
+          />
+        ))}
       </div>
     </section>
   );
